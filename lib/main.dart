@@ -1,3 +1,4 @@
+import 'package:chateo_eela_2025/widgets/social_media_button.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -45,10 +46,20 @@ class MyApp extends StatelessWidget {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      spacing: 16,
                       children: [
-                        Image.asset('assets/icons/facebook.png'),
-                        Image.asset('assets/icons/google.png'),
-                        Image.asset('assets/icons/apple.png'),
+                        SocialMediaButton(
+                          iconPath: 'assets/icons/facebook.png',
+                          borderColor: Color(0xFFB9C1BE),
+                        ),
+                        SocialMediaButton(
+                          iconPath: 'assets/icons/google.png',
+                          borderColor: Color(0xFFB9C1BE),
+                        ),
+                        SocialMediaButton(
+                          iconPath: 'assets/icons/apple.png',
+                          borderColor: Color(0xFFB9C1BE),
+                        ),
                       ],
                     ),
                     Row(
