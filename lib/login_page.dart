@@ -61,7 +61,10 @@ class LoginPage extends StatelessWidget {
               children: [
                 SocialMediaButton(iconPath: 'assets/icons/facebook.png'),
                 SocialMediaButton(iconPath: 'assets/icons/google.png'),
-                SocialMediaButton(iconPath: 'assets/icons/apple.png'),
+                SocialMediaButton(
+                  iconPath: 'assets/icons/apple.png',
+                  color: Colors.black,
+                ),
               ],
             ),
           ),
@@ -69,47 +72,14 @@ class LoginPage extends StatelessWidget {
           TextFormField(
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.emailAddress,
-
-            decoration: const InputDecoration(
-              label: Text('Your email'),
-              labelStyle: TextStyle(
-                color: Color(0xFF24786D),
-                fontWeight: FontWeight.normal,
-                fontSize: 14,
-              ),
-              border: UnderlineInputBorder(
-                borderSide: BorderSide(color: Color(0xFFD6E4E0)),
-              ),
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Color(0xFFD6E4E0)),
-              ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Color(0xFFD6E4E0)),
-              ),
-            ),
+            decoration: const InputDecoration(label: Text('Your email')),
           ),
           const SizedBox(height: 16),
           TextFormField(
             enabled: true,
             textInputAction: TextInputAction.done,
             obscureText: true,
-            decoration: const InputDecoration(
-              label: Text('Password'),
-              labelStyle: TextStyle(
-                color: Color(0xFF24786D),
-                fontWeight: FontWeight.normal,
-                fontSize: 14,
-              ),
-              border: UnderlineInputBorder(
-                borderSide: BorderSide(color: Color(0xFFD6E4E0)),
-              ),
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Color(0xFFD6E4E0)),
-              ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Color(0xFFD6E4E0)),
-              ),
-            ),
+            decoration: const InputDecoration(label: Text('Password')),
           ),
         ],
       ),

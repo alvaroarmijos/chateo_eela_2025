@@ -86,7 +86,9 @@ class _SignUpPageState extends State<SignUpPage> {
           horizontal: 20,
         ).copyWith(bottom: 32 + keyboardHeight),
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           child: const Text('Create an account'),
         ),
       ),
