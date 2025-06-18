@@ -1,3 +1,4 @@
+import 'package:chateo_eela_2025/ui/core/ui/colors.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -48,7 +49,7 @@ class _SignUpPageState extends State<SignUpPage> {
           const SizedBox(height: 20),
           Text(
             'Get chatting with friends and family today by signing up for our chat app!',
-            style: TextStyle(color: Color(0xFF797C7B)),
+            style: TextStyle(color: AppColors.darkGrey),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 40),

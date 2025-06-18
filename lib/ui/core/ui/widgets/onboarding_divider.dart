@@ -1,3 +1,4 @@
+import 'package:chateo_eela_2025/ui/core/ui/colors.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingDivider extends StatelessWidget {
@@ -5,7 +6,7 @@ class OnboardingDivider extends StatelessWidget {
   final Color? color;
   @override
   Widget build(BuildContext context) {
-    final dividerColor = color ?? Color(0xFFD6E4E0);
+    final dividerColor = color ?? AppColors.lightGrey;
     return Row(
       children: [
         Expanded(child: Divider(color: dividerColor.withOpacity(0.2))),

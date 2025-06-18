@@ -1,8 +1,8 @@
-import 'package:chateo_eela_2025/app_navigator.dart';
-import 'package:chateo_eela_2025/login_page.dart';
-import 'package:chateo_eela_2025/onboarding_page.dart';
-import 'package:chateo_eela_2025/sign_up_page.dart';
-import 'package:chateo_eela_2025/theme.dart';
+import 'package:chateo_eela_2025/ui/core/navigation/app_navigator.dart';
+import 'package:chateo_eela_2025/ui/core/themes/theme.dart';
+import 'package:chateo_eela_2025/ui/login/view/login_page.dart';
+import 'package:chateo_eela_2025/ui/onboarding/view/onboarding_page.dart';
+import 'package:chateo_eela_2025/ui/sign_up/view/sign_up_page.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());

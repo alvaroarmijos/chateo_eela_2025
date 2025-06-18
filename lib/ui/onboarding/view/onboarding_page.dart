@@ -1,5 +1,6 @@
-import 'package:chateo_eela_2025/app_navigator.dart';
-import 'package:chateo_eela_2025/widgets/social_media_button.dart';
+import 'package:chateo_eela_2025/ui/core/navigation/app_navigator.dart';
+import 'package:chateo_eela_2025/ui/core/ui/colors.dart';
+import 'package:chateo_eela_2025/ui/core/ui/widgets/social_media_button.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingPage extends StatelessWidget {
@@ -36,7 +37,7 @@ class OnboardingPage extends StatelessWidget {
                   Text(
                     'Our chat app is the perfect way to stay connected with friends and family.',
                     style: TextStyle(
-                      color: Color(0xFFB9C1BE),
+                      color: AppColors.grey,
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
                     ),
@@ -47,15 +48,15 @@ class OnboardingPage extends StatelessWidget {
                     children: [
                       SocialMediaButton(
                         iconPath: 'assets/icons/facebook.png',
-                        borderColor: Color(0xFFB9C1BE),
+                        borderColor: AppColors.grey,
                       ),
                       SocialMediaButton(
                         iconPath: 'assets/icons/google.png',
-                        borderColor: Color(0xFFB9C1BE),
+                        borderColor: AppColors.grey,
                       ),
                       SocialMediaButton(
                         iconPath: 'assets/icons/apple.png',
-                        borderColor: Color(0xFFB9C1BE),
+                        borderColor: AppColors.grey,
                       ),
                     ],
                   ),
@@ -103,10 +104,7 @@ class OnboardingPage extends StatelessWidget {
                     child: RichText(
                       text: TextSpan(
                         text: 'Existing account?',
-                        style: TextStyle(
-                          color: Color(0xFFB9C1BE),
-                          fontSize: 14,
-                        ),
+                        style: TextStyle(color: AppColors.grey, fontSize: 14),
                         children: [
                           TextSpan(
                             text: ' Log in',

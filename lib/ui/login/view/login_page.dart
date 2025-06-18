@@ -1,5 +1,6 @@
-import 'package:chateo_eela_2025/widgets/onboarding_divider.dart';
-import 'package:chateo_eela_2025/widgets/social_media_button.dart';
+import 'package:chateo_eela_2025/ui/core/ui/colors.dart';
+import 'package:chateo_eela_2025/ui/core/ui/widgets/onboarding_divider.dart';
+import 'package:chateo_eela_2025/ui/core/ui/widgets/social_media_button.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -10,22 +11,6 @@ class LoginPage extends StatelessWidget {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     final double keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
-    final inputTheme = InputDecorationTheme(
-      labelStyle: TextStyle(
-        color: Color(0xFF24786D),
-        fontWeight: FontWeight.normal,
-        fontSize: 14,
-      ),
-      border: UnderlineInputBorder(
-        borderSide: BorderSide(color: Color(0xFFD6E4E0)),
-      ),
-      enabledBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: Color(0xFFD6E4E0)),
-      ),
-      focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: Color(0xFFD6E4E0)),
-      ),
-    );
 
     return Scaffold(
       appBar: AppBar(),
@@ -50,7 +35,7 @@ class LoginPage extends StatelessWidget {
           const SizedBox(height: 20),
           Text(
             'Welcome back! Sign in using your social account or email to continue us',
-            style: TextStyle(color: Color(0xFF797C7B)),
+            style: TextStyle(color: AppColors.darkGrey),
             textAlign: TextAlign.center,
           ),
           Padding(
@@ -68,7 +53,7 @@ class LoginPage extends StatelessWidget {
               ],
             ),
           ),
-          OnboardingDivider(color: Color(0xFF797C7B)),
+          OnboardingDivider(color: AppColors.darkGrey),
           TextFormField(
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.emailAddress,
