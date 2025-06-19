@@ -1,6 +1,7 @@
 import 'package:chateo_eela_2025/ui/core/ui/colors.dart';
 import 'package:chateo_eela_2025/ui/core/ui/widgets/onboarding_divider.dart';
 import 'package:chateo_eela_2025/ui/core/ui/widgets/social_media_button.dart';
+import 'package:chateo_eela_2025/utils/validators.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -58,6 +59,8 @@ class LoginPage extends StatelessWidget {
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.emailAddress,
             decoration: const InputDecoration(label: Text('Your email')),
+            validator: Validators.validateEmail,
+            autovalidateMode: AutovalidateMode.always,
           ),
           const SizedBox(height: 16),
           TextFormField(
@@ -65,6 +68,8 @@ class LoginPage extends StatelessWidget {
             textInputAction: TextInputAction.done,
             obscureText: true,
             decoration: const InputDecoration(label: Text('Password')),
+            validator: Validators.validatePassword,
+            autovalidateMode: AutovalidateMode.always,
           ),
         ],
       ),

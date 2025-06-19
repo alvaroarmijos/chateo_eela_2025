@@ -23,7 +23,7 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
-    final double keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
+    // final double keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
     final formKey = GlobalKey<FormState>();
     final cubit = context.read<SignUpCubit>();
 
@@ -66,6 +66,8 @@ class _SignUpPageState extends State<SignUpPage> {
               textInputAction: TextInputAction.next,
               onChanged: cubit.onNameChanged,
               decoration: const InputDecoration(label: Text('Your name')),
+              validator: Validators.validateName,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
             ),
             const SizedBox(height: 16),
             TextFormField(
@@ -73,7 +75,7 @@ class _SignUpPageState extends State<SignUpPage> {
               onChanged: cubit.onEmailChanged,
               keyboardType: TextInputType.emailAddress,
               decoration: const InputDecoration(label: Text('Your email')),
-              autovalidateMode: AutovalidateMode.always,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               validator: Validators.validateEmail,
             ),
             const SizedBox(height: 16),
@@ -83,7 +85,8 @@ class _SignUpPageState extends State<SignUpPage> {
               obscureText: true,
               decoration: const InputDecoration(label: Text('Password')),
               // agregar validación a la contraseña
-              // validator: ,
+              validator: Validators.validatePassword,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
             ),
             const SizedBox(height: 16),
             TextFormField(
@@ -93,6 +96,8 @@ class _SignUpPageState extends State<SignUpPage> {
               decoration: const InputDecoration(
                 label: Text('Confirm Password'),
               ),
+              validator: Validators.validatePassword,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
             ),
             const SizedBox(height: 92),
           ],
@@ -101,7 +106,7 @@ class _SignUpPageState extends State<SignUpPage> {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 20,
-        ).copyWith(bottom: 32 + keyboardHeight),
+        ).copyWith(bottom: 32),
         child: ElevatedButton(
           onPressed: () {},
           child: const Text('Create an account'),
