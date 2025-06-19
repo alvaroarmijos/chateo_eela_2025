@@ -89,15 +89,22 @@ class _SignUpPageState extends State<SignUpPage> {
               autovalidateMode: AutovalidateMode.onUserInteraction,
             ),
             const SizedBox(height: 16),
-            TextFormField(
-              textInputAction: TextInputAction.done,
-              onChanged: cubit.onConfirmPasswordChanged,
-              obscureText: true,
-              decoration: const InputDecoration(
-                label: Text('Confirm Password'),
-              ),
-              validator: Validators.validatePassword,
-              autovalidateMode: AutovalidateMode.onUserInteraction,
+            BlocBuilder<SignUpCubit, SignUpState>(
+              builder: (context, state) {
+                return TextFormField(
+                  textInputAction: TextInputAction.done,
+                  onChanged: cubit.onConfirmPasswordChanged,
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                    label: Text('Confirm Password'),
+                  ),
+                  validator: Validators.validatePassword,
+                  forceErrorText: state.passwordMatch
+                      ? null
+                      : 'Contraseña no coincide',
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                );
+              },
             ),
             const SizedBox(height: 92),
           ],
@@ -108,7 +115,13 @@ class _SignUpPageState extends State<SignUpPage> {
           horizontal: 20,
         ).copyWith(bottom: 32),
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            final isValid = formKey.currentState?.validate() ?? false;
+            if (isValid) {
+              // llamar al cubit para registrar al usuario
+              cubit.createAccount();
+            }
+          },
           child: const Text('Create an account'),
         ),
       ),
