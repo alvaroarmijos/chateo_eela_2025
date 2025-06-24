@@ -29,4 +29,9 @@ class AuthRepositoryImpl extends AuthRepository {
     // Once signed in, return the UserCredential
     await FirebaseAuth.instance.signInWithCredential(credential);
   }
+
+  @override
+  Stream<User?> get currentUser {
+    return FirebaseAuth.instance.authStateChanges();
+  }
 }

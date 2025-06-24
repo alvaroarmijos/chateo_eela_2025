@@ -1,7 +1,9 @@
 import 'package:chateo_eela_2025/ui/core/navigation/app_navigator.dart';
 import 'package:chateo_eela_2025/ui/core/ui/colors.dart';
 import 'package:chateo_eela_2025/ui/core/ui/widgets/social_media_button.dart';
+import 'package:chateo_eela_2025/ui/onboarding/cubit/onboarding_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
@@ -53,6 +55,9 @@ class OnboardingPage extends StatelessWidget {
                       SocialMediaButton(
                         iconPath: 'assets/icons/google.png',
                         borderColor: AppColors.grey,
+                        onTap: () {
+                          context.read<OnboardingCubit>().signInWithGoogle();
+                        },
                       ),
                       SocialMediaButton(
                         iconPath: 'assets/icons/apple.png',
