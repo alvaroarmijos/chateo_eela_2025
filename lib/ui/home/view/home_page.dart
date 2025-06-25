@@ -1,5 +1,9 @@
+import 'package:chateo_eela_2025/ui/auth/bloc/auth_bloc.dart';
+import 'package:chateo_eela_2025/ui/core/navigation/app_navigator.dart';
+import 'package:chateo_eela_2025/ui/core/ui/widgets/chat_avatar.dart';
 import 'package:chateo_eela_2025/ui/home/widgets/chats.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -7,6 +11,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final authState = context.read<AuthBloc>().state;
+    final user = authState is AuthStateLoggedIn ? authState.user : null;
+    final photoUrl = user?.photoURL;
     return Scaffold(
       backgroundColor: Colors.black,
       // appBar: AppBar(
@@ -30,9 +37,26 @@ class HomePage extends StatelessWidget {
                   'Home',
                   style: textTheme.titleLarge?.copyWith(color: Colors.white),
                 ),
-                const CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    'https://photo-cdn2.icons8.com/OCUxgrB3qzbk934tC2nTmEl7VlvF-7f3LJ1fQ9HFuZA/rs:fit:576:384/czM6Ly9pY29uczgu/bW9vc2UtcHJvZC5l/eHRlcm5hbC9hMmE0/Mi82ODE1ODM3MTQ5/YTI0ZmE2YmEzYzBm/Njg0MDMyZjJlMy5q/cGc.webp',
+
+                // BlocBuilder<AuthBloc, AuthState>(
+                //   builder: (context, state) {
+                //     if (state is AuthStateLoggedIn) {
+                //       return CircleAvatar(
+                //         backgroundImage: NetworkImage(
+                //           state.user.photoURL ?? '',
+                //         ),
+                //       );
+                //     }
+                //     return SizedBox();
+                //   },
+                // ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, AppNavigator.profile);
+                  },
+                  child: ChatAvatar(
+                    photoUrl: photoUrl,
+                    name: user?.displayName ?? '',
                   ),
                 ),
               ],

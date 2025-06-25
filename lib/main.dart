@@ -7,6 +7,7 @@ import 'package:chateo_eela_2025/ui/home/view/home_page.dart';
 import 'package:chateo_eela_2025/ui/login/view/login_page.dart';
 import 'package:chateo_eela_2025/ui/onboarding/cubit/onboarding_cubit.dart';
 import 'package:chateo_eela_2025/ui/onboarding/view/onboarding_page.dart';
+import 'package:chateo_eela_2025/ui/profile/view/profile_page.dart';
 import 'package:chateo_eela_2025/ui/root/view/root_page.dart';
 import 'package:chateo_eela_2025/ui/sign_up/cubit/sign_up_cubit.dart';
 import 'package:chateo_eela_2025/ui/sign_up/view/sign_up_page.dart';
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
               child: SignUpPage(),
             ),
             AppNavigator.home: (_) => HomePage(),
+            AppNavigator.profile: (_) => ProfilePage(),
           },
           theme: AppTheme.light,
         ),

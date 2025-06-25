@@ -4,4 +4,5 @@ class AppNavigator {
   static const signUp = '/sign-up';
   static const home = '/home';
   static const onboarding = '/onboarding';
+  static const profile = '/profile';
 }

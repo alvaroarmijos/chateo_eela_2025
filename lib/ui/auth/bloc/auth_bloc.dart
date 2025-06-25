@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:chateo_eela_2025/data/repositories/auth/auth_repository_impl.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
@@ -15,11 +16,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         onData: (user) {
           if (user == null) {
             // Emitir que no tenemos usuario logueado
-            print('User is currently signed out!');
             return AuthStateLoggedOut();
           } else {
-            print('User is signed in!');
-            return AuthStateLoggedIn();
+            return AuthStateLoggedIn(user: user);
           }
         },
       );
