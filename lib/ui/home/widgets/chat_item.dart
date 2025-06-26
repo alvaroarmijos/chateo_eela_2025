@@ -1,27 +1,28 @@
+import 'package:chateo_eela_2025/domain/models/contact.dart';
 import 'package:chateo_eela_2025/ui/core/ui/colors.dart';
+import 'package:chateo_eela_2025/ui/core/ui/widgets/chat_avatar.dart';
 import 'package:flutter/material.dart';
 
 class ChatItem extends StatelessWidget {
-  const ChatItem({super.key});
+  const ChatItem({super.key, required this.contact});
+
+  final Contact contact;
+
   @override
   Widget build(BuildContext context) {
+    final status = (contact.status) ? 'Online' : 'Offline';
+    final colorStatus = contact.status ? Colors.green : Colors.red;
+
     return ListTile(
       onTap: () => {},
-      leading: const CircleAvatar(
-        backgroundImage: NetworkImage(
-          'https://photo-cdn2.icons8.com/OCUxgrB3qzbk934tC2nTmEl7VlvF-7f3LJ1fQ9HFuZA/rs:fit:576:384/czM6Ly9pY29uczgu/bW9vc2UtcHJvZC5l/eHRlcm5hbC9hMmE0/Mi82ODE1ODM3MTQ5/YTI0ZmE2YmEzYzBm/Njg0MDMyZjJlMy5q/cGc.webp',
-        ),
-      ),
-      title: const Text('name'),
-      subtitle: Text('Online', style: TextStyle(color: AppColors.darkGrey)),
-      trailing: const SizedBox(
+      leading: ChatAvatar(name: contact.name ?? '', photoUrl: contact.photoUrl),
+      title: Text(contact.name ?? ''),
+      subtitle: Text(status, style: TextStyle(color: AppColors.darkGrey)),
+      trailing: SizedBox(
         width: 12,
         height: 12,
         child: DecoratedBox(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.green,
-          ),
+          decoration: BoxDecoration(shape: BoxShape.circle, color: colorStatus),
         ),
       ),
     );

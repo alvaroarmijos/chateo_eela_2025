@@ -1,12 +1,24 @@
 import 'package:chateo_eela_2025/ui/auth/bloc/auth_bloc.dart';
 import 'package:chateo_eela_2025/ui/core/navigation/app_navigator.dart';
 import 'package:chateo_eela_2025/ui/core/ui/widgets/chat_avatar.dart';
+import 'package:chateo_eela_2025/ui/home/bloc/home_bloc.dart';
 import 'package:chateo_eela_2025/ui/home/widgets/chats.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<HomeBloc>().add(UpdateUserStatus(status: true));
+  }
 
   @override
   Widget build(BuildContext context) {
