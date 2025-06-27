@@ -36,7 +36,7 @@ class MessageItem extends StatelessWidget {
           if (!mySelf)
             Padding(
               padding: const EdgeInsets.only(right: 16),
-              child: ChatAvatar(name: userName),
+              child: ChatAvatar(name: userName, photoUrl: photoUrl),
             ),
           Stack(
             children: [

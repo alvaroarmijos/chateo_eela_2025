@@ -16,6 +16,7 @@ class ContactsRepositoryImpl extends ContactsRepository {
               name: element["name"],
               photoUrl: element["photoUrl"],
               status: element["status"],
+              userId: element["userId"],
             );
           }).toList() ??
           [];

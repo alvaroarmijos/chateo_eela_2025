@@ -1,6 +1,5 @@
-import 'package:chateo_eela_2025/data/repositories/auth/auth_repository_impl.dart';
-import 'package:chateo_eela_2025/data/repositories/contacts/contacts_repository_impl.dart';
-import 'package:chateo_eela_2025/ui/auth/bloc/auth_bloc.dart';
+import 'package:chateo_eela_2025/ui/profile/cubit/profile_cubit.dart';
+import 'package:chateo_eela_2025/ui/profile/widgets/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,19 +9,18 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            final authState = context.read<AuthBloc>().state;
-            final user = authState is AuthStateLoggedIn ? authState.user : null;
-            if (user != null) {
-              ContactsRepositoryImpl().updateUserStatus(user, false);
-              AuthRepositoryImpl().logOut();
-            }
-          },
-          child: Text('Log out'),
-        ),
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        iconTheme: const IconThemeData(color: Colors.white),
+      ),
+      body: BlocBuilder<ProfileCubit, ProfileState>(
+        builder: (context, state) {
+          return switch (state) {
+            ProfileStateLoading() => const SizedBox(),
+            ProfileStateLoggedIn(user: final user) => ProfileView(user: user),
+          };
+        },
       ),
     );
   }

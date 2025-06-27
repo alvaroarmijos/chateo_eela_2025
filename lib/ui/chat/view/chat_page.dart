@@ -1,3 +1,4 @@
+import 'package:chateo_eela_2025/domain/models/contact.dart';
 import 'package:chateo_eela_2025/ui/chat/widgets/chat_app_bar_title.dart';
 import 'package:chateo_eela_2025/ui/chat/widgets/chat_text_form_field.dart';
 import 'package:chateo_eela_2025/ui/chat/widgets/messages.dart';
@@ -8,19 +9,16 @@ class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Obtener los argumentos que se envian en la Ruta
-    // final contact = ModalRoute.of(context)!.settings.arguments as Contact;
+    final contact = ModalRoute.of(context)!.settings.arguments as Contact;
+
     return Scaffold(
-      appBar: AppBar(
-        title: const ChatAppBarTitle(
-          // contact: contact,
-        ),
-      ),
-      body: const Stack(
+      appBar: AppBar(title: ChatAppBarTitle(contact: contact)),
+      body: Stack(
         children: [
           // List de mensajes
-          Messages(),
+          Messages(name: contact.name ?? '', photoUrl: contact.photoUrl),
           // Widget
-          ChatTextFormField(),
+          ChatTextFormField(contactId: contact.userId),
         ],
       ),
     );

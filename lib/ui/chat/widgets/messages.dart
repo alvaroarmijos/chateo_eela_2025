@@ -2,7 +2,10 @@ import 'package:chateo_eela_2025/ui/chat/widgets/message_item.dart';
 import 'package:flutter/widgets.dart';
 
 class Messages extends StatelessWidget {
-  const Messages({super.key});
+  const Messages({super.key, required this.name, required this.photoUrl});
+
+  final String name;
+  final String? photoUrl;
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -10,37 +13,29 @@ class Messages extends StatelessWidget {
       children: [
         MessageItem(
           mySelf: true,
-          userName: 'userName',
+          userName: name,
+          photoUrl: photoUrl,
           msg: 'msg asdfasdf asdfasdf adsfasd asdfa sfs asdfasdf',
           date: DateTime.now(),
         ),
         MessageItem(
           mySelf: false,
-          userName: 'userName',
+          userName: name,
+          photoUrl: photoUrl,
           msg: 'msg asdfas dfasdf asdf asdfadsf fasdfa asdfasdfasdf ',
           date: DateTime.now(),
         ),
         MessageItem(
           mySelf: false,
-          userName: 'userName',
+          userName: name,
+          photoUrl: photoUrl,
           msg: 'msg asdfas dfasdf asdf asdfadsf fasdfa asdfasdfasdf ',
           date: DateTime.now(),
         ),
         MessageItem(
           mySelf: false,
-          userName: 'userName',
-          msg: 'msg asdfas dfasdf asdf asdfadsf fasdfa asdfasdfasdf ',
-          date: DateTime.now(),
-        ),
-        MessageItem(
-          mySelf: false,
-          userName: 'userName',
-          msg: 'msg asdfas dfasdf asdf asdfadsf fasdfa asdfasdfasdf ',
-          date: DateTime.now(),
-        ),
-        MessageItem(
-          mySelf: false,
-          userName: 'userName',
+          userName: name,
+          photoUrl: photoUrl,
           msg: 'msg asdfas dfasdf asdf asdfadsf fasdfa asdfasdfasdf ',
           date: DateTime.now(),
         ),
