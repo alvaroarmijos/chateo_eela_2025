@@ -5,4 +5,5 @@ class AppNavigator {
   static const home = '/home';
   static const onboarding = '/onboarding';
   static const profile = '/profile';
+  static const chat = '/chat';
 }
