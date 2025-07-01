@@ -10,15 +10,15 @@ String messageToJson(Message data) => json.encode(data.toJson());
 
 class Message {
   final String? message;
-  final String? messageDate;
+  final DateTime messageDate;
   final String? sentyBy;
 
-  Message({this.message, this.messageDate, this.sentyBy});
+  Message({this.message, required this.messageDate, this.sentyBy});
 
-  factory Message.fromJson(Map<String, dynamic> json) => Message(
+  factory Message.fromJson(Map<dynamic, dynamic> json) => Message(
     message: json["message"],
-    messageDate: json["messageDate"],
-    sentyBy: json["sentyBy"],
+    messageDate: DateTime.parse(json["messageDate"]),
+    sentyBy: json["sentBy"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -26,4 +26,11 @@ class Message {
     "messageDate": messageDate,
     "sentyBy": sentyBy,
   };
+
+  // Obtener una lista de Messages a partir de un array de Maps
+  static List<Message> fromJsonArray(List object) {
+    return object.map((item) {
+      return Message.fromJson(item);
+    }).toList()..sort((a, b) => a.messageDate.compareTo(b.messageDate));
+  }
 }

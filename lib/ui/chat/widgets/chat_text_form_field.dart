@@ -23,9 +23,12 @@ class _ChatTextFormFieldState extends State<ChatTextFormField> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = ColorScheme.of(context);
+
     return Align(
       alignment: Alignment.bottomCenter,
-      child: SizedBox(
+      child: Container(
+        color: colorScheme.surface,
         width: double.infinity,
         child: Padding(
           padding: const EdgeInsets.all(12).copyWith(bottom: 20),

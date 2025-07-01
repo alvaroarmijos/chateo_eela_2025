@@ -14,6 +14,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
 
   ChatBloc() : super(ChatState()) {
     on<SendMessageEvent>(_onSendMessageEvent);
+    on<GetMessagesEvent>(_onGetMessagesEvent);
   }
 
   FutureOr<void> _onSendMessageEvent(
@@ -36,5 +37,21 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   String _getChatId(String userId, String contactId) {
     final chatId = [userId, contactId]..sort();
     return '${chatId.first}_ ${chatId.last}';
+  }
+
+  FutureOr<void> _onGetMessagesEvent(
+    GetMessagesEvent event,
+    Emitter<ChatState> emit,
+  ) async {
+    final user = await _authRepository.currentUser.first;
+    if (user == null) return;
+
+    final chatId = _getChatId(user.uid, event.contactId);
+    return emit.forEach(
+      _messagesRepository.getMessages(chatId),
+      onData: (messages) {
+        return state.copyWith(messages: messages);
+      },
+    );
   }
 }

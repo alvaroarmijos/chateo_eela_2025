@@ -16,7 +16,11 @@ class ChatPage extends StatelessWidget {
       body: Stack(
         children: [
           // List de mensajes
-          Messages(name: contact.name ?? '', photoUrl: contact.photoUrl),
+          Messages(
+            name: contact.name ?? '',
+            photoUrl: contact.photoUrl,
+            contacId: contact.userId,
+          ),
           // Widget
           ChatTextFormField(contactId: contact.userId),
         ],

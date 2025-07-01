@@ -1,6 +1,7 @@
 import 'package:chateo_eela_2025/ui/core/ui/colors.dart';
 import 'package:chateo_eela_2025/ui/core/ui/widgets/chat_avatar.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class MessageItem extends StatelessWidget {
   const MessageItem({
@@ -15,15 +16,16 @@ class MessageItem extends StatelessWidget {
   final String userName;
   final String? photoUrl;
   final String msg;
-  final DateTime date;
+  final DateTime? date;
 
   @override
   Widget build(BuildContext context) {
     final color = mySelf ? AppColors.primary : AppColors.messageGrey;
     final colorText = mySelf ? Colors.white : Colors.black;
     final textTheme = Theme.of(context).textTheme;
-    // final dateFormat = DateFormat.jm().format(date);
-    const dateFormat = '1:46';
+    final dateFormat = date == null
+        ? ''
+        : DateFormat.yMd().add_jm().format(date!);
 
     return Padding(
       padding: const EdgeInsets.only(top: 20),
@@ -53,6 +55,7 @@ class MessageItem extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.all(12),
                           constraints: BoxConstraints(
+                            minWidth: 100,
                             maxWidth: MediaQuery.sizeOf(context).width * 0.7,
                           ),
                           decoration: BoxDecoration(
@@ -81,7 +84,7 @@ class MessageItem extends StatelessWidget {
                 right: 0,
                 child: Text(
                   dateFormat,
-                  style: TextStyle(color: AppColors.darkGrey),
+                  style: TextStyle(color: AppColors.darkGrey, fontSize: 10),
                   textAlign: TextAlign.end,
                 ),
               ),
